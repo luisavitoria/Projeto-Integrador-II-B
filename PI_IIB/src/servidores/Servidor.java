@@ -1,24 +1,21 @@
 package servidores;
 
-import java.util.Date;
 
 public abstract class Servidor {
 	
 	private String nome;
-	private int idade;
+	private String dataNascimento;
 	private String cpf;
 	private Endereco endereco;
 	private String telefone;
-	private Date dataContratacao;
+	private String dataContratacao;
 	private String vinculo;
 	private int matricula;
 	
-	public Servidor(String nome, int idade, String cpf, Endereco endereco, String telefone, Date dataContratacao, String vinculo, int matricula) {
+	public Servidor(String nome, String dataNascimento, String cpf, String dataContratacao, String vinculo, int matricula) {
 		this.nome = nome;
-		this.idade = idade;
+		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
-		this.endereco = endereco;
-		this.telefone = telefone;
 		this.dataContratacao = dataContratacao;
 		this.vinculo = vinculo;
 		this.matricula = matricula;
@@ -32,12 +29,12 @@ public abstract class Servidor {
 		this.nome = nome;
 	}
 	
-	public int getIdade() {
-		return this.idade;
+	public String getDataNascimento() {
+		return this.dataNascimento;
 	}
 	
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setDataNascimento(String data) {
+		this.dataNascimento = data;
 	}
 	
 	public String getCpf() {
@@ -64,11 +61,11 @@ public abstract class Servidor {
 		this.telefone = telefone;;
 	}
 	
-	public Date getDataContratacao() {
+	public String getDataContratacao() {
 		return this.dataContratacao;
 	}
 	
-	public void setDataContratacao(Date data) {
+	public void setDataContratacao(String data) {
 		this.dataContratacao = data;
 	}
 	
@@ -86,6 +83,42 @@ public abstract class Servidor {
 	
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
+	}
+	
+	public String getDadosPessoais() {
+		String infoPessoais = 	"\n Dados Pessoais: " + 
+								"\n Nome: " + this.nome + 
+								"\n Data de nascimento: " + this.dataNascimento + 
+								"\n CPF: " + this.cpf;
+		String infoEndereco = "Endereço não informado";
+		String infoTelefone = "Telefone não informado";
+		if(this.endereco == null && this.telefone == null) { 
+			return infoPessoais + 
+					"\n " + infoEndereco +
+					"\n Telefone: " + infoTelefone + "\n";
+		}
+		if(this.telefone == null) {
+			return infoPessoais + 
+					"\n " + this.getEndereco() +
+					"\n Telefone: " + infoTelefone + "\n" ;
+		}
+		if(this.endereco == null) {
+			return infoPessoais + 
+					"\n " + infoEndereco +
+					"\n Telefone: " + this.getTelefone() + "\n";
+		}
+		
+		return infoPessoais + 
+				"\n " + this.getEndereco() +
+				"\n Telefone: " + this.getTelefone() + "\n" ;
+		
+	}
+	
+	public String getDadosContratuais() {
+		return "\n Dados Contratuais: " + 
+				"\n Data de contratação: " + this.dataContratacao +
+				"\n Vínculo: " + this.vinculo + 
+				"\n Matrícula: " + this.matricula;
 	}
 	
 	public abstract String getStatusServidor();
