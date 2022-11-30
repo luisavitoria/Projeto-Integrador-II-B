@@ -41,7 +41,6 @@ public class ServidorAtivo extends Servidor {
 		this.ferias = ferias;
 	}
 	
-	
 	public String getStatusServidor() {
 		return "Servidor Ativo" + 
 				"\n Status atual: " + this.getFerias() + "\n" +

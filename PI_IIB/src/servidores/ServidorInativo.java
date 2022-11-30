@@ -10,15 +10,19 @@ public class ServidorInativo extends Servidor {
 		this.proventos = proventos;
 		this.dataAposentadoria = dataAposentadoria;
 	}
+	
 	public Proventos getProventos() {
 		return proventos;
 	}
+	
 	public void setProventos(Proventos proventos) {
 		this.proventos = proventos;
 	}
+	
 	public String getDataAposentadoria() {
 		return dataAposentadoria;
 	}
+	
 	public void setDataAposentadoria(String dataAposentadoria) {
 		this.dataAposentadoria = dataAposentadoria;
 	}
